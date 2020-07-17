@@ -5,11 +5,10 @@ In the following examples, I tried to
 - Setup a "pipeline" which can be invoked by sending data to 1st step, and processing data from last one. 
 - Create a completableFuture with exceptionally blocks that try to provide an "alternate" result for an exception and bring the pipeline back to normal execution plan. Each exceptionally only acts on the block preceding it. 
 
-The important thing is that during the execution **each step generates a new CompletionStage object** and passes on to the next . 
-Another commonality of this framework is with JavaScript Promises, where a promise can resolve or be rejected and can be handled accordingly. 
+The important thing is that during the execution **each step generates a new CompletionStage object** and passes on to the next Another commonality of this framework is with JavaScript Promises, where a promise can resolve or be rejected and can be handled accordingly. 
 ---
 
-##Lifecycle
+## Lifecycle
 
 - The CompletableFuture can continue on its path until an exception occurs, at which point it will go to "exceptionally" block and if it returns a value, the pipeline will continue from next step from where it left (that generated an exception). Otherwise the exception handler can invoke its own exception to get out of the pipeline. 
 
